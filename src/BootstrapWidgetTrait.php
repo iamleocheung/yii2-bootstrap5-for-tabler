@@ -98,7 +98,7 @@ trait BootstrapWidgetTrait
                 $name = ucfirst($name);
                 $id = $this->options['id'];
                 $options = empty($this->clientOptions) ? '{}' : Json::htmlEncode($this->clientOptions);
-                $view->registerJs("(new tabler.bootstrap.$name('#$id', $options));");
+                $view->registerJs("(new ".(isset(Yii::$app->params['useTabler']) && Yii::$app->params['useTabler'] ? "tabler." : "")."bootstrap.$name('#$id', $options));");
             }
 
             $this->registerClientEvents($name);
